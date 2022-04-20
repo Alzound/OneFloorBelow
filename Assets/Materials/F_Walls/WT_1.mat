@@ -1352,7 +1352,7 @@ Material:
     - _BumpMapPan: {r: 0, g: 0, b: 0, a: 0}
     - _ClearcoatMapPan: {r: 0, g: 0, b: 0, a: 0}
     - _ClippingMaskPan: {r: 0, g: 0, b: 0, a: 0}
-    - _Color: {r: 1, g: 0.60593617, b: 0.5518868, a: 1}
+    - _Color: {r: 1, g: 0.5707547, b: 0.5707547, a: 1}
     - _DecalColor: {r: 1, g: 1, b: 1, a: 1}
     - _DecalColor1: {r: 1, g: 1, b: 1, a: 1}
     - _DecalColor2: {r: 1, g: 1, b: 1, a: 1}
