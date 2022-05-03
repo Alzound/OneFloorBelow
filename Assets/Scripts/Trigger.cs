@@ -5,10 +5,12 @@ using UnityEngine.Animations;
 
 public class Trigger : MonoBehaviour
 {
-    public Animator anim;
+    public Animator room_Anim;
+    public GameObject player; 
+  
     public GameObject trigger;
     public AudioSource audi, audi2;
-    
+    public GameObject destination; 
     
     public float time; 
 
@@ -16,33 +18,42 @@ public class Trigger : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        anim = gameObject.GetComponent<Animator>();
-        
+        room_Anim = gameObject.GetComponent<Animator>();
     }
 
 	private void Update()
 	{
-        Check();
+        FirstCheck();
+        SecondCheck();
 	}
 
 
-	void ExitGame()
+    void FirstCheck()
 	{
-        Debug.Log("Exit"); 
-        Application.Quit(); 
+        if(audi.isPlaying)
+        {
+            room_Anim.SetBool("puerta", true); 
+        }
 	}
 
-    void Check()
-	{
-        if(trigger.GetComponent<TriggerCheck>().entro == true)
+    void SecondCheck()
+    {
+         if(trigger.GetComponent<TriggerCheck>().entro == true)
 		{
+
             audi.Stop();
             if(!audi2.isPlaying)
 			{
                 audi2.Play();
             }
             
-            anim.SetBool("final", true); 
+            room_Anim.SetBool("FR_Sequence", true); 
 		}
-	}
+    }
+
+    void Transition()
+    {
+        player.transform.position = destination.transform.position; 
+    }
+   
 }
