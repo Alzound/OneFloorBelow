@@ -53,6 +53,7 @@ public class Trigger : MonoBehaviour
 
     void Transition()
     {
+        Debug.Log("Cambio"); 
         player.transform.position = destination.transform.position; 
     }
    
