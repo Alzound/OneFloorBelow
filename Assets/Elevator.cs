@@ -13,10 +13,13 @@ public class Elevator : MonoBehaviour
     public bool third;
     bool t_check;
 
+    GameObject elevator;
+    public GameObject player; 
+    public GameObject trigger;  
+
     public Animator anim;   
 
-    public Material mat;
-    public Material newMat;  
+    public Material mat, newMat;  
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +30,11 @@ public class Elevator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(trigger == true)
+        {
+            player.transform.position = elevator.transform.position;
+        }
+         
     }
 
     void CheckRay()
@@ -35,10 +42,8 @@ public class Elevator : MonoBehaviour
         if(first == true)
         {
             this.gameObject.GetComponent<MeshRenderer>().material = newMat;
-            if(f_check == false)
-            {
+            //Aplica un sonido después de error.
 
-            } 
         }
         else
         {
@@ -46,15 +51,17 @@ public class Elevator : MonoBehaviour
         }
         if(second == true)
         {
-
+            this.gameObject.GetComponent<MeshRenderer>().material = newMat;
+            anim.SetBool("2", true);
         }
         else
         {
-
+            this.gameObject.GetComponent<MeshRenderer>().material = mat; 
         }
         if(third == true)
         {
-
+            this.gameObject.GetComponent<MeshRenderer>().material = newMat;
+            anim.SetBool("3", true);
         }
         else
         {
