@@ -9,8 +9,8 @@ public class Trigger : MonoBehaviour
     public GameObject player; 
   
     public GameObject trigger;
-    public AudioSource audi, audi2;
-    public GameObject destination; 
+    public AudioSource audi, audi2, audi3;
+    public GameObject destination, returnDestination; 
     
     public float time; 
 
@@ -55,6 +55,22 @@ public class Trigger : MonoBehaviour
     {
         Debug.Log("Cambio"); 
         player.transform.position = destination.transform.position; 
+        audi2.Stop(); 
+        StartCoroutine(WaitForAudio());
     }
    
+    IEnumerator WaitForAudio()
+    {
+        yield return new WaitForSeconds(15);
+
+            if(!audi3.isPlaying)
+			{
+                audi3.Play();
+            }
+        Debug.Log("llega");
+        yield return new WaitForSeconds(25); 
+        player.transform.position = returnDestination.transform.position;  
+        Debug.Log("Regreso"); 
+    }
+
 }
