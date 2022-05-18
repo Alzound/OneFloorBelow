@@ -4,21 +4,22 @@ using UnityEngine;
 
 public class TriggerCheck : MonoBehaviour
 {
-    public bool entro = false; 
+    public bool entro = false;
+
+    public GameManager manager;  
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    
 
     // Update is called once per frame
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Entro");
             entro = true; 
+            manager.GetComponent<GameManager>().command = true; 
+            manager.GetComponent<GameManager>().audioNum++; 
 
         }
     }
+
 }
