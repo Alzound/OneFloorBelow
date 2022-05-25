@@ -14,6 +14,12 @@ namespace StarterAssets
 #endif
 	public class FirstPersonController : MonoBehaviour
 	{
+		public AudioSource audioS; 
+		public AudioClip audiC; 
+		float time = 0; 
+		int oneSecond = 1; 
+
+
 		[Header("Player")]
 		[Tooltip("Move speed of the character in m/s")]
 		public float MoveSpeed = 4.0f;
@@ -171,6 +177,13 @@ namespace StarterAssets
 			{
 				// move
 				inputDirection = transform.right * _input.move.x + transform.forward * _input.move.y;
+				time += Time.deltaTime;
+				if(time >= oneSecond)
+				{
+					audioS.PlayOneShot(audiC);
+					time = 0; 
+				}
+				
 			}
 
 			// move the player

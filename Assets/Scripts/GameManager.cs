@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
     [Header("Audio")]
     public AudioClip[] audios; 
     AudioSource audioSource;
+    public AudioSource audioS;
+    public AudioClip bulb, door; 
     [Space(10)]
     [Header("Animator")]
     Animator anim; 
@@ -213,5 +215,13 @@ public class GameManager : MonoBehaviour
 
     }
 
-    
+    public void PlayBrokenSound()
+    {
+        audioS.PlayOneShot(bulb);
+    }
+
+    public void PlayOpenSound()
+    {
+        audioS.PlayOneShot(door);
+    }
 }

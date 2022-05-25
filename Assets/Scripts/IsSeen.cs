@@ -5,23 +5,22 @@ using UnityEngine;
 public class IsSeen : MonoBehaviour
 {
     public GameObject[] aparitions; 
-    Renderer cam; 
+    public GhostSeen gS; 
+    public bool seen = false; 
 
     // Start is called before the first frame update
     void Start()
     {
-        cam = this.gameObject.GetComponent<Renderer>(); 
-        aparitions = new GameObject[15];  
-
-        if(cam.isVisible && gameObject.CompareTag("Hidden"))
-        {
-            gameObject.SetActive(false); 
-        }
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(GetComponent<Renderer>().isVisible)
+        {
+            gS.GhostDisappear(); 
+            Debug.Log("ghost"); 
+        }
     }
 }

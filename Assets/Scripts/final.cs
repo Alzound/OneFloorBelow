@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class final : MonoBehaviour
 {
-
+    public GameObject player; 
     public Animator anim; 
 
     private void Start() {
@@ -14,6 +14,7 @@ public class final : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         if(other.gameObject.CompareTag("Player"))
         {
+            Debug.Log("Final"); 
             anim.SetBool("credits", true);
 
         }
