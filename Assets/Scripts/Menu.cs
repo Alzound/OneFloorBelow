@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class Menu : MonoBehaviour
 {
     Canvas can;  
-    public GameObject player; 
+    public GameObject player, mainmenuB, AxisButton, volumeS, returnB, title;
     public AudioSource game_Audio; 
   
 
@@ -18,7 +18,7 @@ public class Menu : MonoBehaviour
 
     public void Play()
     {
-        
+        title.SetActive(false); 
         player.SetActive(true);
         game_Audio.enabled = true;
         can.enabled = false; 
@@ -26,7 +26,20 @@ public class Menu : MonoBehaviour
 
     public void Options()
     {
+        AxisButton.SetActive(true);
+        volumeS.SetActive(true);
+        returnB.SetActive(true);
+        mainmenuB.SetActive(false);
+        
+    }
 
+    public void returnOpt()
+	{
+        mainmenuB.SetActive(true);
+
+        volumeS.SetActive(false);
+        returnB.SetActive(false); 
+        AxisButton.SetActive(false);
     }
 
     public void Quit()

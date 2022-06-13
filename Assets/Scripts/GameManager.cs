@@ -52,8 +52,6 @@ public class GameManager : MonoBehaviour
         {
             anim.SetBool("down", true);
         }
-         
-        Debug.Log(audioNum); 
     }
 
     
@@ -188,8 +186,6 @@ public class GameManager : MonoBehaviour
 
     IEnumerator WaitAudio()
     {
-        Debug.Log("wait audio");
-        
         
         yield return new WaitForSeconds(audioSource.clip.length);
         audioSource.Stop(); 
@@ -197,12 +193,9 @@ public class GameManager : MonoBehaviour
         audioSource.Play();
     }
 
-
-
-
     void Transition()
     {
-        Debug.Log("Cambio"); 
+
         player.transform.position = Calm_Teleport.transform.position;
         command = true; 
         audioNum = 2;   
@@ -223,5 +216,11 @@ public class GameManager : MonoBehaviour
     public void PlayOpenSound()
     {
         audioS.PlayOneShot(door);
+    }
+
+    public void QuitS()
+    {
+         
+        Application.Quit();
     }
 }

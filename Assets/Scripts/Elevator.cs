@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events; 
-using UnityEngine.EventSystems; 
+
 
 public class Elevator : MonoBehaviour
 {
-    public int num = 0;  
+    public int num = 0;
+    public GameObject wall; 
     public GameManager manager; 
     public Animator anim;   
 
@@ -24,14 +25,13 @@ public class Elevator : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Entro al trigger"); 
             //Debug.Log(other); 
             //Debug.Log(num); 
             switch(num)
             {
                 case 2: 
                 {
-                    Debug.Log("SEgundo piso"); 
+
                     anim.SetBool("segundo", true);
                     manager.GetComponent<GameManager>().audioNum = 3; 
                     manager.GetComponent<GameManager>().command = true;
@@ -57,10 +57,11 @@ public class Elevator : MonoBehaviour
     }
 
     private void OnTriggerExit(Collider other) {
+        
         if(manager.GetComponent<GameManager>().audioNum == 5)
         {
             manager.GetComponent<GameManager>().fall = true;
-            Debug.Log("caida"); 
+
         }
     }
 
